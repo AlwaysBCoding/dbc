@@ -1,6 +1,7 @@
 # CONFIGURATION
 setwd("~/Desktop/dbc/")
 library("ggplot2")
+library("class")
 
 # READ THE HEIGHTS AND WEIGHTS DATA SET FROM FILE
 heights.weights <- read.csv("heights_weights_genders.csv")
@@ -67,4 +68,18 @@ ggplot(heights.weights, aes(x=Height, y=Weight, color=Gender))+
       geom_abline(slope=logit.slope, intercept=logit.intercept, color="black")+
       geom_point(x=70, y=195, color="yellow")
 
-# LETS USE A NEW DATA SET THAT HAS WOMAN ATHELETE SPORTS ADDED AS WELL
+# LETS USE A NEW DATA SET THAT HAS FEMALE SPORTS ADDED AS WELL
+female.atheletes <- read.csv("female_atheletes.csv", header=TRUE)
+
+ggplot(female.atheletes, aes(x=height, y=weight, color=sport))+
+       geom_point(size=3)
+
+female.atheletes.train <- female.atheletes[,c(2,3,4)]
+female.atheletes.test <- c(69,135)
+#female.atheletes.test <- data.frame(t(data.frame(c(72, 145), c(66, 135))), row.names=NULL)
+
+knn(female.atheletes.train[,c(2,3)], female.atheletes.test, female.atheletes.train[,c(1)], k=3)
+
+ggplot(female.atheletes, aes(x=height, y=weight, color=sport))+
+       geom_point(size=3)+
+       geom_point(x=69,y=135,color="yellow",size=3)

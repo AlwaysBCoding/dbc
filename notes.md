@@ -52,6 +52,11 @@ The line is called a "separating hyperplane" or decision boundary. You can see t
 This starts to break down when we have multiple classes to classify. We need a new approach, time to introduce the concept of nearest neighbor.
 
 # Nearest Neighbor
+Go to the slides to show the concept of nearest neighbor, and k-nearest neighbor to get an understanding of how this works. Do it with the female athelete data.
+
+1 point doesn't work because an outlier can fuck with it.
+A radius doesn't work because how large should the radius be?
+Best way is to pick K number of points and take the average, or pick the highest class
 
 # Measuring Distance
 - d(x,y) >= 0 ( no negative distances )
@@ -65,11 +70,8 @@ sum of { abs(x-y) for all dimensions }
 Euclidian Distance
 sum of { sqrt ( (x - y)^2 ) for all dimensions }
 
-# K-Nearest Neighbors is better
-
-# What happens when we have more than one discrete class?
-
 # What happens if we have more than one dimension? ( Now we're getting serious )
+How do we model this in two-dimensonal space?
 
 # Natural Language Processing
 
@@ -79,3 +81,4 @@ This can all be implemented in Ruby !!!
 Attach to middleware and the entire process can be automated.
 
 Turned an error message into data, wrote code that could model the data, interpret it and react to it without us doing anything. This allows us to build new solutions.
+sbl
