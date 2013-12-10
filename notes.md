@@ -47,9 +47,10 @@ Given a height and a weight can we classify someone as a Male or a Female?
 
 I am 5'10 and 195 lbs. can we classify?
 
-The line is called a "separating hyperplane" or decision boundary
+The line is called a "separating hyperplane" or decision boundary. You can see that we would classify me as a Male which is the right decision to make.
 
-# Decision Boundary
+This starts to break down when we have multiple classes to classify. We need a new approach, time to introduce the concept of nearest neighbor.
+
 # Nearest Neighbor
 
 # Measuring Distance

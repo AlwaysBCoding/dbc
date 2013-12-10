@@ -61,3 +61,10 @@ logit.slope <- - coef(logit.model)[2] / coef(logit.model)[3]
 ggplot(heights.weights, aes(x=Height, y=Weight, color=Gender))+
       geom_point()+
       geom_abline(slope=logit.slope, intercept=logit.intercept, color="black")
+
+ggplot(heights.weights, aes(x=Height, y=Weight, color=Gender))+
+      geom_point()+
+      geom_abline(slope=logit.slope, intercept=logit.intercept, color="black")+
+      geom_point(x=70, y=195, color="yellow")
+
+# LETS USE A NEW DATA SET THAT HAS WOMAN ATHELETE SPORTS ADDED AS WELL
