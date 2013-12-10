@@ -12,6 +12,8 @@ Any non-random data set inevitably has patterns. From these patterns we can make
 
 - Given the beat of a song, what year can we predict the song was recorded in? ( This is numeric since there is meaning for 2010.5 )
 
+Set of tools to help find patterns in data and make predictions, which can be applied in different ways. ( Statistical Modeling, Naive Bayes, K-nearest neighbors, K-means )
+
 We can extract data from sources we never realized had data ( such as the audio rhythm of a song, and increasingly natural language and unstrutcutred text )
 
 Since these predictions can be made with code, they can be handled by an application without human interpretation. For example a system can automatically recommend products etc...
@@ -28,3 +30,51 @@ One example I want to use, is debugging error messages.
 All of this is manual interpretation of data, but if we can do this through code we can build solutions that were previously impossible. *This* is really what I find so compelling.
 
 # Heights and Weights
+Given a person's height, what would we predict their weight is?
+Simple problem of linear regression
+Explore some data
+
+- Very good at interpolation not always extrapolation
+
+If we know a person is 5'10 what would we guess his weight is?
+If we know a person is 5'10 and MALE what would we guess his weight is?
+
+- Improvement by exploring data to find patterns, making generalizations, and making predictions from it
+- I manually explored the data set to find patterns, but we can automate this!
+
+# Classification
+Given a height and a weight can we classify someone as a Male or a Female?
+
+I am 5'10 and 195 lbs. can we classify?
+
+The line is called a "separating hyperplane" or decision boundary
+
+# Decision Boundary
+# Nearest Neighbor
+
+# Measuring Distance
+- d(x,y) >= 0 ( no negative distances )
+- d(x,y) == 0 ( only if x = y )
+- d(y,x) == d(x,y) ( distances are symmetric )
+- d(x,y) <= d(x,z) + d(z,y) ( the triangle inequality )
+
+Manhattan Distance
+sum of { abs(x-y) for all dimensions }
+
+Euclidian Distance
+sum of { sqrt ( (x - y)^2 ) for all dimensions }
+
+# K-Nearest Neighbors is better
+
+# What happens when we have more than one discrete class?
+
+# What happens if we have more than one dimension? ( Now we're getting serious )
+
+# Natural Language Processing
+
+Building a term-document matrix
+Using KNN to find similar messages.
+This can all be implemented in Ruby !!!
+Attach to middleware and the entire process can be automated.
+
+Turned an error message into data, wrote code that could model the data, interpret it and react to it without us doing anything. This allows us to build new solutions.
