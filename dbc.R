@@ -19,6 +19,7 @@ ggplot(heights.weights, aes(x=Height, y=Weight))+
       geom_smooth(method="lm")
 
 print((70 * 7.717) - 350.737)
+print((53 * 7.717) - 350.737)
 
 # PLOT THE HEIGHTS
 ggplot(heights.weights, aes(x=Height))+
@@ -44,14 +45,14 @@ ggplot(heights.weights, aes(x=Weight, fill=Gender))+
       geom_density()+
       facet_grid(Gender ~ .)
 
-# PLOT THE HEIGHTS AND WEIGHTS WITH GENDER COLOR
-ggplot(heights.weights, aes(x=Height, y=Weight, color=Gender))+
-      geom_point()
-
 # RECALCULATE OUR PREDICTION FOR A 5'10 *MALE*
 only_males <- subset(heights.weights, Gender=="Male")
 lm(only_males$Weight ~ only_males$Height)
 print((70 * 5.962) - 224.499)
+
+# PLOT THE HEIGHTS AND WEIGHTS WITH GENDER COLOR
+ggplot(heights.weights, aes(x=Height, y=Weight, color=Gender))+
+  geom_point()
 
 ## TURN INTO CLASSIFICATION. GIVEN A HEIGHT AND A WEIGHT CAN WE CLASSIFY SOMEONE AS MALE OR FEMALE?
 heights.weights <- transform(heights.weights, Male=ifelse(Gender == "Male", 1, 0))
@@ -74,12 +75,39 @@ female.atheletes <- read.csv("female_atheletes.csv", header=TRUE)
 ggplot(female.atheletes, aes(x=height, y=weight, color=sport))+
        geom_point(size=3)
 
+ggplot(female.atheletes, aes(x=height, y=weight, color=sport))+
+  geom_point(size=3)+
+  geom_point(x=69,y=135,color="yellow",size=3)
+
 female.atheletes.train <- female.atheletes[,c(2,3,4)]
 female.atheletes.test <- c(69,135)
-#female.atheletes.test <- data.frame(t(data.frame(c(72, 145), c(66, 135))), row.names=NULL)
+female.atheletes.test <- data.frame(t(data.frame(c(72, 145), c(66, 135))), row.names=NULL)
 
 knn(female.atheletes.train[,c(2,3)], female.atheletes.test, female.atheletes.train[,c(1)], k=3)
 
-ggplot(female.atheletes, aes(x=height, y=weight, color=sport))+
-       geom_point(size=3)+
-       geom_point(x=69,y=135,color="yellow",size=3)
+# NATURAL LANGUAGE PROCESSING
+library("tm")
+library("plyr")
+options(stringsAsFactors=FALSE)
+
+# CLEAN TEXT
+stopwords("english")
+cleanCorpus <- function(corpus) {
+  corpus.tmp <- tm_map(corpus, removePunctuation)
+  corpus.tmp <- tm_map(corpus.tmp, stripWhitespace)
+  corpus.tmp <- tm_map(corpus.tmp, tolower)
+  corpus.tmp <- tm_map(corpus.tmp, removeWords, stopwords("english"))
+  return(corpus.tmp)
+}
+
+# CREATE TERM DOCUMENT MATRIX
+generateTDM <- function(path) {
+  speech.corpus <- Corpus(DirSource(directory=path))
+  speech.corpus.clean <- cleanCorpus(speech.corpus)
+  speech.tdm <- TermDocumentMatrix(speech.corpus.clean)
+  
+  #speech.tdm <- removeSparseTerms(speech.tdm, 0.7)
+  return(speech.tdm)
+}
+
+tweets_tdm <- generateTDM("tweet_corpus/")

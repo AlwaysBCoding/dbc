@@ -1,0 +1,1 @@
+"Machine Learning for Hackers" by Drew Conway + John White is a phenomenal machine learning resource and R tutorial. HIGHLY recommend.

@@ -1,0 +1,1 @@
+Can anyone give me a decent explanation of why the documentation for R libraries are in pdfs and not on github? Anyone? anyone? bueller?

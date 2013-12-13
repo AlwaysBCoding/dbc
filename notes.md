@@ -22,6 +22,9 @@ What we are essentially doing is writing code that can extract meaning from data
 
 How is manual interpretation of data a bottleneck at DBC? ( In teaching web development )
 One example I want to use, is debugging error messages.
+
+"could not connect to server: No such file or directory Is the server running locally and accepting connections on Unix domain socket "/var/pgsql_socket/.s.PGSQL.5432"?"
+
 - Error message displayed to the user
 - User needs to determine what kind of error message it is
 - User needs to remove application specific information in order to google it
@@ -75,10 +78,27 @@ How do we model this in two-dimensonal space?
 
 # Natural Language Processing
 
-Building a term-document matrix
+Building a term-document matrix. ( Also called document-term matrix )
+Is a MATRIX where each ROW corresponds to a document, and each column corresponds to a TERM in the entire corpus of documents. Each cell is the frequency of that term in the document, with 0 meaning that the term did not appear.
+
+I would assume that stemming could take place as a precursor to the creation of the TDM
+
 Using KNN to find similar messages.
 This can all be implemented in Ruby !!!
 Attach to middleware and the entire process can be automated.
 
 Turned an error message into data, wrote code that could model the data, interpret it and react to it without us doing anything. This allows us to build new solutions.
-sbl
+
+# NLP Workflow
+1. Initialization
+2. Clean Text
+Use the tm package to perform some basic cleanup on the corpus
+3. Build TDM
+4. Attach Name
+5. Stack matricies on top of one another?
+6. Create hold out sample ( test set )
+7. Model - knn
+8. Assess accuracy
+
+# INTRO SLIDES
+# KNN SLIDES
