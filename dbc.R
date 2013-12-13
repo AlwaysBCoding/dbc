@@ -111,3 +111,4 @@ generateTDM <- function(path) {
 }
 
 tweets_tdm <- generateTDM("tweet_corpus/")
+Terms(tweets_tdm)

@@ -118,6 +118,45 @@
 					<h1>CODE</h1>
 				</section>
 
+				<section>
+					<h2>How do we turn unstructured text into data?</h2>
+				</section>
+
+				<section>
+					<h2>Natural Language Processing</h2>
+					<ol>
+						<li class="fragment fade-in" data-fragment-index="1">Clean the text as much as possible</li>
+							<ol>
+								<li class="fragment fade-in" data-fragment-index="2">Remove punctuation</li>
+								<li class="fragment fade-in" data-fragment-index="2">Strip whitespace</li>
+								<li class="fragment fade-in" data-fragment-index="2">Lowercase everything</li>
+								<li class="fragment fade-in" data-fragment-index="3">Remove stopwords</li>
+								<li class="fragment fade-in" data-fragment-index="4">Aggregate words by stem</li>
+							</ol>
+						<li class="fragment fade-in" data-fragment-index="5">Create a term document matrix</li>
+						<li class="fragment fade-in" data-fragment-index="5">Calculate distance in n-dimensional space</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>Term Document Matrix</h2>
+					<ul>
+						<li>Exactly like a database table</li>
+						<li>Each DOCUMENT in the CORPUS is a row</li>
+						<li>Each TERM in the entire CORPUS is a column</li>
+						<li>Each cell is the frequency of the TERM in the DOCUMENT</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Term Document Matrix</h2>
+					<p><small>"could not connect to server: No such file or directory Is the server running locally and accepting connections on Unix domain socket "/var/pgsql_socket/.s.PGSQL.5432"?"</small></p>
+					<img src="./images/tdm.png" />
+				</section>
+
+				<section>
+					<h1>CODE</h1>
+				</section>
 
 			</div>
 
